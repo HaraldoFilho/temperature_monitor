@@ -1,0 +1,14 @@
+# Parameters:
+
+# FROM          : Sender's e-mail address.
+# TO            : Recipient's e-mail address.
+# TEMP_HIGH     : Message when the temperature is above the threshold.
+# TEMP_NORMAL   : Message when the temperature is back to normal.
+# TEMP_CRITICAL : Message when the temperature is above the critical level.
+
+FROM          = ""
+TO            = ""
+TEMP_HIGH     = "IS TOO HOT!"
+TEMP_NORMAL   = "temperature is back to normal"
+TEMP_CRITICAL = "TEMPERATURE IS CRITICAL!!! The system will be shutted down..."
+
