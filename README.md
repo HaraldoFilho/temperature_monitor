@@ -6,7 +6,7 @@ This is a script to monitor the temperature of a Raspberry Pi. It sends warning 
 
 To run, the script requires **_Python 3_**, a user **_pi_** configured in the system and **_mailx_** package installed and configured.
 
-To install the script, execute the following commands: 
+To install the script, login as **_pi_** and execute the following commands: 
 
 ```
 cd /home/pi
@@ -18,7 +18,7 @@ cd temperature_monitor
 The file _/etc/sudoers_ will be automatically opened for edit. Add the following line to it:
 
 ```
-%sudo   ALL=NOPASSWD: /sbin/shutdown
+pi   ALL=(ALL) NOPASSWD: /sbin/shutdown
 ```
 
 This will permit that the device can be shutted down without asking for a password.
