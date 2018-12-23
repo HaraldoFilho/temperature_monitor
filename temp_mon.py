@@ -5,6 +5,8 @@ import time
 import config
 import mail
 
+from datetime import datetime
+
 
 ### FUNCTIONS ###
 
@@ -17,6 +19,12 @@ def read_temperature():
 def get_hostname():
     hostname = os.popen("hostname").readline()
     return hostname.replace("\n", "")
+
+def write_log(temp, level):
+    now = datetime.now()
+    log = open("temp_mon.log", "a")
+    log.write("[" + datetime.strftime(now, "%d/%m/%y %H:%M:%S") + "] " + str(temp) + " : " + level + "\n")
+    log.close
 
 def send_email(email_from, email_to, subject, temp):
     host_name = get_hostname()
@@ -36,6 +44,7 @@ while True:
     temp = read_temperature()
 
     if temp > config.TEMP_CRITICAL:
+        write_log(temp, "CRITICAL")
         send_email(mail.FROM, mail.TO, mail.TEMP_CRITICAL, temp)
         os.system("sudo shutdown -h now")
         exit(0)
@@ -44,11 +53,13 @@ while True:
         if temp > config.TEMP_THRESHOLD:
             if temp_ok:
                 temp_ok = False
+                write_log(temp, "HIGH")
                 send_email(mail.FROM, mail.TO , mail.TEMP_HIGH, temp)
                 i = 1
         else:
             if not temp_ok:
                 temp_ok = True
+                write_log(temp, "NORMAL")
                 send_email(mail.FROM, mail.TO, mail.TEMP_NORMAL, temp)
                 i = 1
 

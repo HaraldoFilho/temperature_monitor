@@ -12,6 +12,7 @@
 
 case "$1" in
   start)
+    rm /home/pi/temperature_monitor/temp_mon.log
     su pi -c /home/pi/temperature_monitor/temp_mon.py
     ;;
 
