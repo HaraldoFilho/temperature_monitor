@@ -10,10 +10,26 @@
 #              and send an e-mail if it is too high
 ### END INIT INFO
 
+RUN_DIR=/home/pi/temperature_monitor
+LOG_FILE=temp_mon.log
+
 case "$1" in
   start)
-    rm /home/pi/temperature_monitor/temp_mon.log
-    su pi -c /home/pi/temperature_monitor/temp_mon.py
+
+    if [ -e $RUN_DIR/$LOG_FILE ];
+        then
+            file_size=`du -k "$RUN_DIR/$LOG_FILE" | cut -f1`
+        else
+            file_fsize=0
+    fi
+
+    if [ $file_size -gt 100 ];
+        then
+            rm $RUN_DIR/$LOG_FILE
+    fi
+
+    su pi -c $RUN_DIR/temp-mon.py
+
     ;;
 
   *)

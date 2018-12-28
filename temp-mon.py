@@ -22,14 +22,14 @@ def get_hostname():
 
 def write_log(temp, level):
     now = datetime.now()
-    log = open("temp_mon.log", "a")
+    log = open("/home/pi/temperature_monitor/temp_mon.log", "a")
     log.write("[" + datetime.strftime(now, "%d/%m/%y %H:%M:%S") + "] " + str(temp) + " : " + level + "\n")
     log.close
 
 def send_email(email_from, email_to, subject, temp):
     host_name = get_hostname()
     try:
-        os.system("echo \"The temperature of " + host_name + " is " + str(temp) + "\'C\" | mail -s \"" + host_name + " " + subject + "\" -r " + email_from + " " + email_to)
+        os.system("echo \"The temperature of " + host_name + " is " + str(temp) + "\'C\" | mail -s \"" + host_name + " " + subject + "\" -A \"/home/pi/temperature_monitor/temp_mon.log\" -r " + email_from + " " + email_to)
     except:
         pass
 
