@@ -50,7 +50,7 @@ while True:
         exit(0)
 
     if i > config.MON_INTERVAL:
-        if temp > config.TEMP_THRESHOLD:
+        if temp > config.TEMP_HIGH:
             if temp_ok:
                 temp_ok = False
                 write_log(temp, "HIGH")
