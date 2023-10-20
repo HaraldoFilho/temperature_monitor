@@ -28,6 +28,7 @@ case "$1" in
             rm $RUN_DIR/$LOG_FILE
     fi
 
+    sleep 60
     su pi -c $RUN_DIR/temp-mon.py
 
     ;;
