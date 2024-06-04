@@ -8,7 +8,7 @@
 
 FROM          = ""
 TO            = ""
-TEMP_HIGH     = "I'M TOO HOT!"
-TEMP_NORMAL   = "My temperature is back to normal"
-TEMP_CRITICAL = "MY TEMPERATURE IS CRITICAL!!! I'm shutting down..."
+TEMP_HIGH     = "DEVICE TEMPERATURE IS TOO HIGH!"
+TEMP_NORMAL   = "Device temperature is back to normal"
+TEMP_CRITICAL = "DEVICE TEMPERATURE IS CRITICAL!!! Shutting down..."
 
