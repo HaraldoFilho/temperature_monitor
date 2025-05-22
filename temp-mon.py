@@ -11,7 +11,7 @@ from datetime import datetime
 ### FUNCTIONS ###
 
 def read_temperature():
-    t = os.popen("/opt/vc/bin/vcgencmd measure_temp").readline()
+    t = os.popen("vcgencmd measure_temp").readline()
     t = t.replace("temp=", "")
     t = t.replace("\'C", "")
     return float(t)
@@ -29,7 +29,7 @@ def write_log(temp, level):
 def send_email(email_from, email_to, subject, temp):
     host_name = get_hostname()
     try:
-        os.system("echo \"My temperature is " + str(temp) + "\'C\" | mail -s \"" + subject + "\" -A \"/home/pi/temperature_monitor/temp_mon.log\" -a From:" + host_name + "\<" + email_from + "\> " + email_to)
+        os.system("echo \"Device temperature is " + str(temp) + "\'C\" | mail -s \"" + subject + "\" -A \"/home/pi/temperature_monitor/temp_mon.log\" -a From:" + host_name + "\<" + email_from + "\> " + email_to)
     except:
         pass
 
