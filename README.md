@@ -4,7 +4,15 @@ This is a script to monitor the temperature of a Raspberry Pi. It sends warning 
 
 ## Installation
 
-To run, the script requires **_Python 3_**, a user **_pi_** configured in the system and the packages **_mailutils_** and **_ssmtp_** installed and configured.
+To run, the script requires **_Python 3_**, a user **_pi_** configured in the system and the packages **_vcgencmd_**, **_mailutils_** and **_ssmtp_** installed and configured.
+
+To install vcgencmd:
+
+```
+git clone https://github.com/nicmcd/vcgencmd.git
+cd vcgencmd
+sudo python3 setup.py install
+```
 
 To install the script, login as **_pi_** and execute the following commands: 
 
